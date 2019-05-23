@@ -11,11 +11,7 @@ phases:
   pre_build:
     commands:
       - echo installing npm packages
-      - cd hello-world
-      - echo installing npm indide hello-world
-      - npm install 
-      - echo returning to root
-      - cd ..
+      - cd hello-world &&  npm install && cd ..
   build:
     commands:
       - echo build started at `date`

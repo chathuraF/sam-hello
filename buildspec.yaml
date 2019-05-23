@@ -6,16 +6,18 @@ phases:
       nodejs: 8
     commands:
       - echo installing sam 
+      - pip install --upgrade pip
       - pip install aws-sam-cli
   pre_build:
     commands:
       - echo installing npm packages
-      - npm install
+      - cd hello-world |  npm install | cd..
   build:
     commands:
       - echo build started at `date`
-      - echo deploying with serverless
-      - sls deploy -v -s $ENV_NAME
+      - echo deploying with sam
+      - sam package --template-file template.yaml --s3-bucket janahitha-lambda --output-template-file sam-template.yaml
+      - sam deploy --template-file sam-template.yaml --stack-name sam-stack-1 --capabilities CAPABILITY_IAM
   post_build:
     commands:
       - echo deployment completed at `date`

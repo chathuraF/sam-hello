@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 8
+    commands:
+      - echo installing sam 
+      - pip install aws-sam-cli
+  pre_build:
+    commands:
+      - echo installing npm packages
+      - npm install
+  build:
+    commands:
+      - echo build started at `date`
+      - echo deploying with serverless
+      - sls deploy -v -s $ENV_NAME
+  post_build:
+    commands:
+      - echo deployment completed at `date`

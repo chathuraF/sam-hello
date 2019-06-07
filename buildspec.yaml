@@ -18,7 +18,7 @@ phases:
       - echo build started at $ENV_NAME
       - echo build started at $ZIPMONEY_API
       - echo deploying with sam
-      - sam package --template-file template.yaml --s3-bucket janahitha-lambda-$ENV_NAME --parameters ParameterKey=PaymentProxyEnv, ParameterValue=$ENV_NAME --output-template-file sam-template.yaml
+      - sam package --template-file template.yaml --s3-bucket janahitha-lambda-$ENV_NAME --parameters ParameterKey=PaymentProxyEnv ParameterValue=$ENV_NAME --output-template-file sam-template.yaml
       - sam deploy --template-file sam-template.yaml --stack-name sam-stack-$ENV_NAME --capabilities CAPABILITY_IAM
   post_build:
     commands:

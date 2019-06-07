@@ -4,8 +4,19 @@ Description: Sample SAM Template for sam-app
   
 Globals:
   Function:
-    Timeout: 3
-    
+    Timeout: 5
+
+Parameters:
+  PaymentProxyEnv:
+    Type: String
+    Default: dev
+    Allowedvalues:
+      - dev
+      - qa
+      - uat
+      - prod
+    Description: Application development environments
+
 Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function 
@@ -19,3 +30,6 @@ Resources:
           Properties:
             Path: /hello
             Method: get
+    Environment:
+      Variables:
+        ENVIRONMEMT: !Ref PaymentProxyEnv

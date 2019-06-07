@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="payment-button">Make a payment</button>
+    <script  type="text/javascript" src="https://payment-proxy.dev.travcorpservices.com/zipmoney/iframe-loader">
+    </script>
+    <script  type="text/javascript">
+      window.onload = function () {
+        TTCZM.attacheButton('payment-button',
+          {env: 'dev' ,
+            queryParams: {
+              order_reference: 'TTCC-1121'
+            }
+          });
+      }
+    </script>
+</body>
+</html>

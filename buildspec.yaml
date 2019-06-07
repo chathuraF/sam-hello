@@ -19,7 +19,7 @@ phases:
       - echo build started at $ZIPMONEY_API
       - echo deploying with sam
       - sam package --template-file template.yaml --s3-bucket janahitha-lambda-$ENV_NAME --output-template-file sam-template.yaml
-      - sam deploy --template-file sam-template.yaml --stack-name sam-stack-1 --capabilities CAPABILITY_IAM
+      - sam deploy --template-file sam-template.yaml --stack-name sam-stack-$ENV_NAME --capabilities CAPABILITY_IAM
   post_build:
     commands:
       - echo deployment completed at `date`

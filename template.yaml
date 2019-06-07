@@ -10,7 +10,7 @@ Parameters:
   PaymentProxyEnv:
     Type: String
     Default: dev
-    Allowedvalues:
+    AllowedValues:
       - dev
       - qa
       - uat

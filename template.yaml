@@ -32,5 +32,5 @@ Resources:
             Method: get
       Environment:
         Variables:
-          ENV_NAME: jana-dev
+          ENV_NAME: $ENV_NAME
           TABLE: employees

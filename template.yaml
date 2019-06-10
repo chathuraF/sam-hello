@@ -9,13 +9,18 @@ Globals:
 Parameters:
   Environment:
     Type: String
-    Default: dev
+    Default: qa
     AllowedValues:
       - dev
       - qa
       - uat
       - prod
     Description: Application development environments
+
+  ZipApiKey:
+    Type: String
+    Default: ''
+    Description: ZipMoney Api Key
 
 Resources:
   HelloWorldFunction:
@@ -24,7 +29,7 @@ Resources:
       CodeUri: hello-world/
       Handler: app.lambdaHandler
       Runtime: nodejs8.10
-      FunctionName: !Join [ '-', [ 'HelloBuddy' , '-', !Ref Environment ] ]
+      FunctionName: !Join [ '-', [ 'HelloBuddy' , !Ref Environment ] ]
       Events:
         HelloWorld:
           Type: Api
@@ -34,4 +39,4 @@ Resources:
       Environment:
         Variables:
           ENV_NAME: !Ref Environment
-          TABLE: employees
+          API_KEY: !Ref ZipApiKey

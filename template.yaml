@@ -30,6 +30,7 @@ Resources:
           Properties:
             Path: /hello
             Method: get
-    Environment:
-      Variables:
-        ENVIRONMEMT: !Ref PaymentProxyEnv
+      Environment:
+        Variables:
+          ENV_NAME: jana-dev
+          TABLE: employees

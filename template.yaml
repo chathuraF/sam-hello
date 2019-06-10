@@ -5,6 +5,11 @@ Description: Sample SAM Template for sam-app
 Globals:
   Function:
     Timeout: 5
+    Environment:
+      Variables:
+        ENV_NAME: !Ref Environment
+        API_KEY: !Ref ZipApiKey
+        REGION: !FindInMap [ EnvMappings, !Ref Environment, region ]
 
 Parameters:
   Environment:
@@ -51,8 +56,8 @@ Resources:
           Properties:
             Path: /hello
             Method: get
-      Environment:
-        Variables:
-          ENV_NAME: !Ref Environment
-          API_KEY: !Ref ZipApiKey
-          REGION: !FindInMap [ EnvMappings, !Ref Environment, region ]
+      # Environment:
+      #   Variables:
+      #     ENV_NAME: !Ref Environment
+      #     API_KEY: !Ref ZipApiKey
+      #     REGION: !FindInMap [ EnvMappings, !Ref Environment, region ]

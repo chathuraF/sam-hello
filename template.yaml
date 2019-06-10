@@ -22,6 +22,21 @@ Parameters:
     Default: ''
     Description: ZipMoney Api Key
 
+Mappings:
+  EnvMappings:
+    dev:
+      region: eu-west-1
+      url: payment-proxy.dev.travcorpservices.com
+    qa:
+      region: eu-west-1
+      url: payment-proxy.qa.travcorpservices.com
+    uat:
+      region: eu-west-1
+      url: payment-proxy.uat.travcorpservices.com
+    prod:
+      region: eu-west-1
+      url: payment-proxy.travcorpservices.com
+
 Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function 
@@ -40,3 +55,4 @@ Resources:
         Variables:
           ENV_NAME: !Ref Environment
           API_KEY: !Ref ZipApiKey
+          REGION: !FindInMap [ EnvMappings, !Ref Environment, region ]

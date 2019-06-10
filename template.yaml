@@ -7,7 +7,7 @@ Globals:
     Timeout: 5
 
 Parameters:
-  PaymentProxyEnv:
+  Environment:
     Type: String
     Default: dev
     AllowedValues:
@@ -24,6 +24,7 @@ Resources:
       CodeUri: hello-world/
       Handler: app.lambdaHandler
       Runtime: nodejs8.10
+      FunctionName: !Join [ '-', [ 'HelloBuddy' , '-', !Ref Environment ] ]
       Events:
         HelloWorld:
           Type: Api
@@ -32,5 +33,5 @@ Resources:
             Method: get
       Environment:
         Variables:
-          ENV_NAME: $ENV_NAME
+          ENV_NAME: !Ref Environment
           TABLE: employees

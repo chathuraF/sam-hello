@@ -22,8 +22,8 @@ phases:
       - echo build started at $ENV_NAME
       - echo build started at $ZIPMONEY_API
       - echo deploying with sam
-      - aws cloudformation package --template-file template.yaml --parameters ParameterKey=PaymentProxyEnv,ParameterValue=dev --s3-bucket janahitha-lambda-$ENV_NAME --output-template-file sam-template.yaml
-      - aws cloudformation deploy --template-file sam-template.yaml --stack-name sam-stack-$ENV_NAME --capabilities CAPABILITY_IAM
+      - aws cloudformation package --template-file template.yaml --s3-bucket janahitha-lambda-$ENV_NAME --output-template-file sam-template.yaml
+      - aws cloudformation deploy --template-file sam-template.yaml --stack-name sam-stack-$ENV_NAME --capabilities CAPABILITY_IAM --parameter-overrides ParameterKey=PaymentProxyEnv ParameterValue=dev 
   post_build:
     commands:
       - echo deployment completed at `date`

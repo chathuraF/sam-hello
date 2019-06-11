@@ -56,8 +56,8 @@ Resources:
           Properties:
             Path: /hello
             Method: get
-      # Environment:
-      #   Variables:
-      #     ENV_NAME: !Ref Environment
-      #     API_KEY: !Ref ZipApiKey
-      #     REGION: !FindInMap [ EnvMappings, !Ref Environment, region ]
+      Environment:
+        Variables:
+          ENV_NAME: !Ref Environment
+          API_KEY: !Ref ZipApiKey
+          REGION: !FindInMap [ EnvMappings, !Ref Environment, region ]

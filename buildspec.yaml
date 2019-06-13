@@ -24,3 +24,7 @@ phases:
   post_build:
     commands:
       - echo deployment completed at `date`
+
+artifacts:
+  files:
+    - build.hash.yaml

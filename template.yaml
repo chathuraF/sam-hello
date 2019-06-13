@@ -20,7 +20,7 @@ Parameters:
       - qa
       - uat
       - prod
-    Description: Application development environments
+    Description: Application development environments for sam.
 
   ZipApiKey:
     Type: String

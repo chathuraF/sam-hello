@@ -19,7 +19,7 @@ phases:
       - echo build started at $ZIPMONEY_API
       - echo deploying with sam
       - echo assume role to execute
-      - aws cloudformation package --template-file template.yaml --s3-bucket janahitha-lambda-$ENV_NAME --output-template-file sam-template-$ENV_NAME.yaml --force-upload true
+      - aws cloudformation package --template-file template.yaml --s3-bucket janahitha-lambda-$ENV_NAME --output-template-file sam-template-$ENV_NAME.yaml --force-upload
       - aws cloudformation deploy --template-file sam-template.yaml --stack-name sam-stack-$ENV_NAME --capabilities CAPABILITY_IAM --parameter-overrides Environment=$ENV_NAME ZipApiKey=$ZIPMONEY_API
   post_build:
     commands:

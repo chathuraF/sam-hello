@@ -26,6 +26,8 @@ phases:
       - echo deployment completed at `date`
 
 artifacts:
+  type: zip
   files:
+    - template.yaml
     - sam-template.yaml
 

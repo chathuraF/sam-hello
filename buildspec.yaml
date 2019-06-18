@@ -11,7 +11,7 @@ phases:
   pre_build:
     commands:
       - echo installing npm packages
-      - cd hello-world &&  npm install && cd ..
+      - cd hello-world &&  npm install && npm run test && cd ..
   build:
     commands:
       - echo build environment is `date`
@@ -28,6 +28,6 @@ phases:
 artifacts:
   type: zip
   files:
-    - template.yaml
+   # - template.yaml
     - sam-template.yaml
 

@@ -28,7 +28,7 @@ Outputs:
     Description: sub stack VPC 
     Value: janaBoy
     Export:
-      Name: expMyVpc
+      Name: !Sub "sub-VPCID"
 
   # VpcId:
   #   Value: !Ref VPC

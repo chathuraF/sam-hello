@@ -52,7 +52,7 @@ Resources:
       CodeUri: hello-world/
       Handler: app.lambdaHandler
       Runtime: nodejs8.10
-      FunctionName: !Join [ '-', [ 'payment-test-chat' , !Ref Environment ] ]
+      FunctionName: !Join [ '-', [ 'payment-test-chat' , !Ref ProxyStack.VPC ] ]
       Events:
         HelloWorld:
           Type: Api

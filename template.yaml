@@ -27,6 +27,17 @@ Parameters:
     Default: ''
     Description: ZipMoney Api Key
 
+Mappings:
+  EnvMappings:
+    dev:
+      region: eu-west-1
+    qa:
+      region: eu-west-1
+    uat:
+      region: eu-west-1
+    prod:
+      region: eu-west-1
+
 Resources:
   ProxyStack:
     Type: AWS::Serverless::Application
@@ -69,3 +80,4 @@ Resources:
         Variables:
           ENV_NAME: !Ref Environment
           API_KEY: !Ref ZipApiKey
+          REGION: !FindInMap [ EnvMappings, !Ref Environment, region ]

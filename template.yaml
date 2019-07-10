@@ -43,7 +43,9 @@ Resources:
     Type: AWS::Serverless::Application
     Properties:
       Location: ./sub-template.yaml
- 
+      Parameters: 
+       Environment: !Ref Environment
+       
   HelloWorldFunction:
     Type: AWS::Serverless::Function 
     Properties:

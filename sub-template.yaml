@@ -24,7 +24,11 @@ Resources:
         Value: !Join [ '-', [ 'payment-proxy-vpc' , !Ref Environment ] ]
 
 Outputs:
-  VpcId:
-    Value: !Ref VPC
-    Export:
-      Name: Unique-VpcId
+  myVpcId:
+    Description: "VPC id"
+    Value: !GetAtt VPC
+
+  # VpcId:
+  #   Value: !Ref VPC
+  #   Export:
+  #     Name: Unique-VpcId

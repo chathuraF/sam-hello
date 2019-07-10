@@ -37,4 +37,4 @@ Outputs:
     Description: sub stack VPC 
     Value: !Ref VPC
     Export:
-      Name: my-vpc-id
+      Name: !Sub "${AWS::StackName}-VPCID"

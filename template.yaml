@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: Sample SAM Template for sam-app test with gitFlow and set develop v3
+Description: Proxy Import
   
 Globals:
   Function:
@@ -8,8 +8,6 @@ Globals:
     Environment:
       Variables:
         ENV_NAME: !Ref Environment
-        #API_KEY: !Ref ZipApiKey
-        #REGION: !FindInMap [ EnvMappings, !Ref Environment, region ]
 
 Parameters:
   Environment:
@@ -21,22 +19,6 @@ Parameters:
       - uat
       - prod
     Description: Application development environments for sam.
-
-  # ZipApiKey:
-  #   Type: String
-  #   Default: ''
-  #   Description: ZipMoney Api Key
-
-# Mappings:
-#   EnvMappings:
-#     dev:
-#       region: eu-west-1
-#     qa:
-#       region: eu-west-1
-#     uat:
-#       region: eu-west-1
-#     prod:
-#       region: eu-west-1
 
 Resources:
   PublicSubnet1:

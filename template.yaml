@@ -42,7 +42,7 @@ Resources:
   Proxy-Stack:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://janahitha-lambda-dev.s3.amazonaws.com/sub-template.yaml
+      TemplateURL: https://janahitha-lambda-dev.s3.amazonaws.com/proxy/sub-template.yaml
       TimeoutInMinutes: 2
 
   HelloWorldFunction:

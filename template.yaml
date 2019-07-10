@@ -53,7 +53,8 @@ Resources:
       Handler: app.lambdaHandler
       Runtime: nodejs8.10
       #FunctionName: !Join [ '-', [ 'payment-test-chat' , Fn::ImportValue: expMyVpc] ]
-      FunctionName: Fn::ImportValue: !Sub "sub-VPCID"
+      #FunctionName: Fn::ImportValue: !Sub "sub-VPCID"
+      FunctionName: hello-jana
       Events:
         HelloWorld:
           Type: Api

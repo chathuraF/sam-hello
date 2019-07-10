@@ -8,8 +8,8 @@ Globals:
     Environment:
       Variables:
         ENV_NAME: !Ref Environment
-        # API_KEY: !Ref ZipApiKey
-        REGION: !FindInMap [ EnvMappings, !Ref Environment, region ]
+        #API_KEY: !Ref ZipApiKey
+        #REGION: !FindInMap [ EnvMappings, !Ref Environment, region ]
 
 Parameters:
   Environment:
@@ -27,16 +27,16 @@ Parameters:
   #   Default: ''
   #   Description: ZipMoney Api Key
 
-Mappings:
-  EnvMappings:
-    dev:
-      region: eu-west-1
-    qa:
-      region: eu-west-1
-    uat:
-      region: eu-west-1
-    prod:
-      region: eu-west-1
+# Mappings:
+#   EnvMappings:
+#     dev:
+#       region: eu-west-1
+#     qa:
+#       region: eu-west-1
+#     uat:
+#       region: eu-west-1
+#     prod:
+#       region: eu-west-1
 
 Resources:
   PublicSubnet1:
@@ -56,7 +56,7 @@ Resources:
       CodeUri: hello-world/
       Handler: app.lambdaHandler
       Runtime: nodejs8.10
-      FunctionName: my-lambda-import
+      FunctionName: my-lambda-import-xyz
       #FunctionName: !Join [ '-', [ 'payment-test-chat' , Fn::ImportValue: expMyVpc] ]
       #FunctionName: Fn::ImportValue: !Sub "sub-VPCID"
       # FunctionName:
@@ -71,4 +71,4 @@ Resources:
       Environment:
         Variables:
           ENV_NAME: !Ref Environment
-          REGION: !FindInMap [ EnvMappings, !Ref Environment, region ]
+          #REGION: !FindInMap [ EnvMappings, !Ref Environment, region ]

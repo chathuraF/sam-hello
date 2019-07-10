@@ -42,8 +42,8 @@ Resources:
   Proxy-Stack:
     Type: AWS::CloudFormation::Stack
     Properties:
-    TemplateURL: https://s3.amazonaws.com
-    TimeoutInMinutes: 60
+    TemplateURL: https://janahitha-lambda.s3.amazonaws.com/sub-template.yaml
+    TimeoutInMinutes: 2
 
   HelloWorldFunction:
     Type: AWS::Serverless::Function 

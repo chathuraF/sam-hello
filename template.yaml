@@ -52,7 +52,8 @@ Resources:
       CodeUri: hello-world/
       Handler: app.lambdaHandler
       Runtime: nodejs8.10
-      FunctionName: !Join [ '-', [ 'payment-test-chat' , !ImportValue expVPC] ]
+      #FunctionName: !Join [ '-', [ 'payment-test-chat' , Fn::ImportValue:expVPC ] ]
+      FunctionName: Fn::ImportValue:expVPC
       Events:
         HelloWorld:
           Type: Api

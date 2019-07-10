@@ -39,6 +39,12 @@ Mappings:
       region: eu-west-1
 
 Resources:
+  Proxy-Stack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+    TemplateURL: https://s3.amazonaws.com
+    TimeoutInMinutes: 60
+
   HelloWorldFunction:
     Type: AWS::Serverless::Function 
     Properties:

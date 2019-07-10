@@ -1,7 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: Proxy VPC
-# AWSTemplateFormatVersion: '2010-09-09'
-# Transform: AWS::Serverless-2016-10-31
 
 Parameters:
   Environment:
@@ -15,6 +13,13 @@ Parameters:
     Description: Application development environments for sam.
 
 Resources:
+  ProxyStack:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: ./template.yaml
+      Parameters: 
+       Environment: !Ref Environment
+
   VPC:
     Type: AWS::EC2::VPC
     Properties:

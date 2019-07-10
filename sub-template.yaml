@@ -1,5 +1,7 @@
+#AWSTemplateFormatVersion: '2010-09-09'
+#Description: Proxy VPC
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Proxy VPC
+Transform: AWS::Serverless-2016-10-31
 
 Parameters:
   Environment:
@@ -23,15 +25,9 @@ Resources:
       - Key: Name
         Value: !Join [ '-', [ 'payment-proxy-vpc' , !Ref Environment ] ]
 
-
 Outputs:
   myVPC:
     Description: sub stack VPC 
     Value: !Ref VPC
     Export:
       Name: my-vpc-id
-
-  # VpcId:
-  #   Value: !Ref VPC
-  #   Export:
-  #     Name: Unique-VpcId

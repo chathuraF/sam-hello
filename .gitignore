@@ -130,3 +130,5 @@ $RECYCLE.BIN/
 
 # application specific one
 hello-world/node_modules
+
+hello-world/apptetst.js

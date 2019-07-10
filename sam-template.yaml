@@ -1,18 +1,69 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Sample SAM Template for sam-app
+Description: Sample SAM Template for sam-app test with gitFlow and set develop v3
 Globals:
   Function:
-    Timeout: 3
+    Environment:
+      Variables:
+        API_KEY:
+          Ref: ZipApiKey
+        ENV_NAME:
+          Ref: Environment
+        REGION:
+          Fn::FindInMap:
+          - EnvMappings
+          - Ref: Environment
+          - region
+    Timeout: 5
+Mappings:
+  EnvMappings:
+    dev:
+      region: eu-west-1
+    prod:
+      region: eu-west-1
+    qa:
+      region: eu-west-1
+    uat:
+      region: eu-west-1
+Parameters:
+  Environment:
+    AllowedValues:
+    - dev
+    - qa
+    - uat
+    - prod
+    Default: qa
+    Description: Application development environments for sam.
+    Type: String
+  ZipApiKey:
+    Default: ''
+    Description: ZipMoney Api Key
+    Type: String
 Resources:
   HelloWorldFunction:
     Properties:
-      CodeUri: s3://janahitha-lambda/5864573c15ea6df4ea3bdc686f841f4a
+      CodeUri: s3://payment-proxy-dev/4a6fe9be09adaedf46e12adb22bc5be1
+      Environment:
+        Variables:
+          API_KEY:
+            Ref: ZipApiKey
+          ENV_NAME:
+            Ref: Environment
+          REGION:
+            Fn::FindInMap:
+            - EnvMappings
+            - Ref: Environment
+            - region
       Events:
         HelloWorld:
           Properties:
             Method: get
             Path: /hello
           Type: Api
+      FunctionName:
+        Fn::Join:
+        - '-'
+        - - payment-test-chat
+          - Ref: Environment
       Handler: app.lambdaHandler
       Runtime: nodejs8.10
     Type: AWS::Serverless::Function

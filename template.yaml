@@ -8,7 +8,7 @@ Globals:
     Environment:
       Variables:
         ENV_NAME: !Ref Environment
-        API_KEY: !Ref ZipApiKey
+        # API_KEY: !Ref ZipApiKey
         REGION: !FindInMap [ EnvMappings, !Ref Environment, region ]
 
 Parameters:
@@ -22,10 +22,10 @@ Parameters:
       - prod
     Description: Application development environments for sam.
 
-  ZipApiKey:
-    Type: String
-    Default: ''
-    Description: ZipMoney Api Key
+  # ZipApiKey:
+  #   Type: String
+  #   Default: ''
+  #   Description: ZipMoney Api Key
 
 Mappings:
   EnvMappings:
@@ -71,5 +71,4 @@ Resources:
       Environment:
         Variables:
           ENV_NAME: !Ref Environment
-          API_KEY: !Ref ZipApiKey
           REGION: !FindInMap [ EnvMappings, !Ref Environment, region ]

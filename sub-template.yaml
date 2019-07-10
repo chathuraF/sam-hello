@@ -15,6 +15,7 @@ Parameters:
 
 Resources:
   ProxyStack:
+    DependsOn: VPC
     Type: AWS::Serverless::Application
     Properties:
       Location: ./template.yaml

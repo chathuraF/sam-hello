@@ -24,11 +24,11 @@ Resources:
         Value: !Join [ '-', [ 'payment-proxy-vpc' , !Ref Environment ] ]
 
 Outputs:
-  VPCLogicalID:
+  myVPC:
     Description: sub stack VPC 
     Value: janaBoy
     Export:
-      Name: expVPC
+      Name: janaBoy
 
   # VpcId:
   #   Value: !Ref VPC

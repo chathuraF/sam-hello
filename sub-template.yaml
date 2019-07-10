@@ -14,12 +14,12 @@ Parameters:
     Description: Application development environments for sam.
 
 Resources:
-  # ProxyStack:
-  #   Type: AWS::Serverless::Application
-  #   Properties:
-  #     Location: ./template.yaml
-  #     Parameters: 
-  #      Environment: !Ref Environment
+  ProxyStack:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: ./template.yaml
+      Parameters: 
+       Environment: !Ref Environment
 
   VPC:
     Type: AWS::EC2::VPC

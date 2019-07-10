@@ -21,16 +21,16 @@ Parameters:
     Description: Application development environments for sam.
 
 Resources:
-  PublicSubnet1:
-    Type: AWS::EC2::Subnet
-    Properties:
-      VpcId: !ImportValue my-vpc-id
-      AvailabilityZone: us-east-1
-      CidrBlock: 10.80.32.0/19
-      MapPublicIpOnLaunch: true
-      Tags:
-      - Key: Name
-        Value: payment-proxy-public-subnet
+  # PublicSubnet1:
+  #   Type: AWS::EC2::Subnet
+  #   Properties:
+  #     VpcId: !ImportValue my-vpc-id
+  #     AvailabilityZone: us-east-1
+  #     CidrBlock: 10.80.32.0/19
+  #     MapPublicIpOnLaunch: true
+  #     Tags:
+  #     - Key: Name
+  #       Value: payment-proxy-public-subnet
        
   HelloWorldFunction:
     Type: AWS::Serverless::Function 

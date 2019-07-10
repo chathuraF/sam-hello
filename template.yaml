@@ -49,7 +49,7 @@ Resources:
   PublicSubnet1:
     Type: AWS::EC2::Subnet
     Properties:
-      VpcId: !ImportValue my-vpc-id
+      VpcId: !ImportValue ProxyStack.my-vpc-id
       AvailabilityZone: us-east-1
       CidrBlock: 10.80.32.0/19
       MapPublicIpOnLaunch: true

@@ -22,3 +22,9 @@ Resources:
       Tags:
       - Key: Name
         Value: !Join [ '-', [ 'payment-proxy-vpc' , !Ref Environment ] ]
+
+Outputs:
+  VpcId:
+    Value: !Ref VPC
+    Export:
+      Name: Unique-VpcId

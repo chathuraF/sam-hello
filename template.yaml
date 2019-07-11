@@ -27,7 +27,7 @@ Resources:
       VpcId:
         Fn::ImportValue:
           Fn::Sub: "pre-stack-VPCID"
-      AvailabilityZone: us-east-1
+      AvailabilityZone: eu-west-1
       CidrBlock: 10.80.32.0/19
       MapPublicIpOnLaunch: true
       Tags:

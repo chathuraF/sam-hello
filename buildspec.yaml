@@ -17,7 +17,7 @@ phases:
       - echo build environment is `date`
       - echo build started at $ENV_NAME
       - echo build started at $ZIPMONEY_API
-      - echo deploying with sam & building cf
+      - echo deploying with sam and building cf
       - echo assume role to execute
       #- aws s3 cp pre-stack.yaml s3://janahitha-lambda-$ENV_NAME/proxy/
       #- aws cloudformation create-stack --template-url https://janahitha-lambda-dev.s3.amazonaws.com/proxy/pre-stack.yaml --stack-name pre-stack --parameters ParameterKey=Environment,ParameterValue=$ENV_NAME

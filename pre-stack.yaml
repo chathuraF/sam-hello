@@ -23,11 +23,45 @@ Resources:
       - Key: Name
         Value: !Join [ '-', [ 'proxy-vpc' , !Ref Environment ] ]
 
+  PublicSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: us-east-1a
+      CidrBlock: 10.80.32.0/19
+      MapPublicIpOnLaunch: true
+      Tags:
+      - Key: Name
+        Value: payment-proxy-public-subnet
+
+  LambdaSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: payment-proxy-lambda-sg
+      GroupDescription: payment-proxy-lambda-sg
+      SecurityGroupIngress:
+      - IpProtocol: -1
+        CidrIp: 0.0.0.0/0
+      VpcId:
+        Ref: VPC
+      Tags:
+      - Key: Name
+        Value: payment-proxy-lambda-sg
+
 Outputs:
   myVPC:
-    Description: sub stack VPC 
     Value: !Ref VPC
     Export:
       Name: !Sub "${AWS::StackName}-VPCID"
+
+  mySubNet:
+    Value: !Ref PublicSubnet
+    Export:
+      Name: !Sub "${AWS::StackName}-SUBNET"
+
+  mySecGroup:
+    Value: !Ref PublicSubnet
+    Export:
+      Name: !Sub "${AWS::StackName}-SECGROUP"
 
 #aws cloudformation create-stack --stack-name proxy-main --parameter-overrides Environment=dev --profile home

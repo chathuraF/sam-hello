@@ -8,6 +8,15 @@ Globals:
     Environment:
       Variables:
         ENV_NAME: !Ref Environment
+    VpcConfig:
+      SecurityGroupIds: 
+        - Fn::ImportValue:
+            Fn::Sub: 'payment-services-proxy-SecurityGroup'
+      SubnetIds: 
+        - Fn::ImportValue:
+            Fn::Sub: 'payment-services-proxy-PrivateSubnetZoneAId'
+        - Fn::ImportValue:
+            Fn::Sub: 'payment-services-proxy-PrivateSubnetZoneBId'
 
 Parameters:
   Environment:
@@ -78,15 +87,6 @@ Resources:
       Handler: app.lambdaHandler
       Runtime: nodejs8.10
       FunctionName: Hello-world-July
-      VpcConfig:
-        SecurityGroupIds: 
-          - Fn::ImportValue:
-             Fn::Sub: 'payment-services-proxy-SecurityGroup'
-        SubnetIds: 
-          - Fn::ImportValue:
-             Fn::Sub: 'payment-services-proxy-PrivateSubnetZoneAId'
-          - Fn::ImportValue:
-             Fn::Sub: 'payment-services-proxy-PrivateSubnetZoneBId'
       Events:
         HelloWorld:
           Type: Api

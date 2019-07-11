@@ -63,5 +63,3 @@ Outputs:
     Value: !Ref LambdaSecurityGroup
     Export:
       Name: !Sub "${AWS::StackName}-SECGROUP"
-
-#aws cloudformation create-stack --stack-name proxy-main --parameter-overrides Environment=dev --profile home

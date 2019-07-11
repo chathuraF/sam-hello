@@ -77,11 +77,7 @@ Resources:
       CodeUri: hello-world/
       Handler: app.lambdaHandler
       Runtime: nodejs8.10
-      #FunctionName: !Join [ '-', [ 'payment-test-chat' , Fn::ImportValue: expMyVpc] ]
-      #FunctionName: Fn::ImportValue: !Sub "sub-VPCID"
       FunctionName: Hello-world-July
-        #  Fn::ImportValue:
-        #    Fn::Sub: 'pre-stack-VPCID'
       VpcConfig:
         SecurityGroupIds: 
           - Fn::ImportValue:

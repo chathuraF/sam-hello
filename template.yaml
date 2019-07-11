@@ -81,10 +81,12 @@ Resources:
       VpcConfig:
         SecurityGroupIds: 
           - Fn::ImportValue:
-             Fn::Sub: 'pre-stack-SECGROUP'
+             Fn::Sub: 'payment-services-proxy-SecurityGroup'
         SubnetIds: 
           - Fn::ImportValue:
-             Fn::Sub: 'pre-stack-SUBNET'
+             Fn::Sub: 'payment-services-proxy-PrivateSubnetZoneAId'
+          - Fn::ImportValue:
+             Fn::Sub: 'payment-services-proxy-PrivateSubnetZoneBId'
       Events:
         HelloWorld:
           Type: Api

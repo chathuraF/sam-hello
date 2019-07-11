@@ -20,7 +20,7 @@ phases:
       - echo deploying with sam
       - echo assume role to execute
       #- aws s3 cp sub-template.yaml s3://janahitha-lambda-$ENV_NAME/proxy/
-      - aws cloudformation package --template-file sub-template.yaml --s3-bucket janahitha-lambda-$ENV_NAME --output-template-file sam-template.yaml
+      - aws cloudformation package --template-file template.yaml --s3-bucket janahitha-lambda-$ENV_NAME --output-template-file sam-template.yaml
       #- aws cloudformation deploy --template-file sam-template.yaml --stack-name sam-stack-$ENV_NAME --capabilities CAPABILITY_IAM --parameter-overrides Environment=$ENV_NAME ZipApiKey=$ZIPMONEY_API
   post_build:
     commands:

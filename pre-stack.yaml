@@ -1,11 +1,10 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Transform: AWS::Serverless-2016-10-31
-Description: Proxy VPC
+Description: Chat Pre Stack
 
 Parameters:
   Environment:
     Type: String
-    Default: qa
+    Default: dev
     AllowedValues:
       - dev
       - qa
@@ -14,14 +13,6 @@ Parameters:
     Description: Application development environments for sam.
 
 Resources:
-  ProxyStack:
-    DependsOn: VPC
-    Type: AWS::Serverless::Application
-    Properties:
-      Location: ./template.yaml
-      Parameters: 
-       Environment: !Ref Environment
-
   VPC:
     Type: AWS::EC2::VPC
     Properties:
@@ -30,12 +21,13 @@ Resources:
       EnableDnsHostnames: true
       Tags:
       - Key: Name
-        Value: !Join [ '-', [ 'payment-proxy-vpc' , !Ref Environment ] ]
+        Value: !Join [ '-', [ 'proxy-vpc' , !Ref Environment ] ]
 
 Outputs:
   myVPC:
     Description: sub stack VPC 
     Value: !Ref VPC
     Export:
-      #Name: !Sub "${AWS::StackName}-VPCID"
-      Name: "VPCID"
+      Name: !Sub "${AWS::StackName}-VPCID"
+
+#aws cloudformation create-stack --stack-name proxy-main --parameter-overrides Environment=dev --profile home

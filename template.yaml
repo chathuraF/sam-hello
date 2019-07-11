@@ -21,18 +21,18 @@ Parameters:
     Description: Application development environments for sam.
 
 Resources:
-  PublicSubnet1:
-    Type: AWS::EC2::Subnet
-    Properties:
-      VpcId:
-        Fn::ImportValue:
-          Fn::Sub: "pre-stack-VPCID"
-      AvailabilityZone: eu-east-1a
-      CidrBlock: 10.80.32.0/19
-      MapPublicIpOnLaunch: true
-      Tags:
-      - Key: Name
-        Value: payment-proxy-public-subnet
+  # PublicSubnet1:
+  #   Type: AWS::EC2::Subnet
+  #   Properties:
+  #     VpcId:
+  #       Fn::ImportValue:
+  #         Fn::Sub: "pre-stack-VPCID"
+  #     AvailabilityZone: eu-east-1a
+  #     CidrBlock: 10.80.32.0/19
+  #     MapPublicIpOnLaunch: true
+  #     Tags:
+  #     - Key: Name
+  #       Value: payment-proxy-public-subnet
        
   HelloWorldFunction:
     Type: AWS::Serverless::Function 
@@ -40,12 +40,11 @@ Resources:
       CodeUri: hello-world/
       Handler: app.lambdaHandler
       Runtime: nodejs8.10
-      FunctionName: my-lambda-import-xyz
       #FunctionName: !Join [ '-', [ 'payment-test-chat' , Fn::ImportValue: expMyVpc] ]
       #FunctionName: Fn::ImportValue: !Sub "sub-VPCID"
-      # FunctionName:
-      #   Fn::ImportValue:
-      #     Fn::Sub: 'sub-VPCID'
+      FunctionName:
+         Fn::ImportValue:
+           Fn::Sub: 'pre-stack-VPCID'
       Events:
         HelloWorld:
           Type: Api

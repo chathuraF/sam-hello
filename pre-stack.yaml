@@ -60,7 +60,7 @@ Outputs:
       Name: !Sub "${AWS::StackName}-SUBNET"
 
   mySecGroup:
-    Value: !Ref PublicSubnet
+    Value: !Ref LambdaSecurityGroup
     Export:
       Name: !Sub "${AWS::StackName}-SECGROUP"
 

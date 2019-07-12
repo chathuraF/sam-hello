@@ -21,22 +21,22 @@ Parameters:
     Description: Application development environments for sam.
 
 Resources:
-  LambdaEC2Policy:
-    Type: "AWS::IAM::Policy"
-    Properties: 
-      PolicyName: "LambdaEC2"
-      PolicyDocument: 
-        Version: "2012-10-17"
-        Statement:
-          - Effect: Allow
-            Action:
-            - logs:CreateLogGroup
-            - logs:CreateLogStream
-            - logs:PutLogEvents
-            - ec2:CreateNetworkInterface
-            - ec2:DescribeNetworkInterfaces
-            - ec2:DeleteNetworkInterface
-            Resource: "*"
+  # LambdaEC2Policy:
+  #   Type: "AWS::IAM::Policy"
+  #   Properties: 
+  #     PolicyName: "LambdaEC2"
+  #     PolicyDocument: 
+  #       Version: "2012-10-17"
+  #       Statement:
+  #         - Effect: Allow
+  #           Action:
+  #           - logs:CreateLogGroup
+  #           - logs:CreateLogStream
+  #           - logs:PutLogEvents
+  #           - ec2:CreateNetworkInterface
+  #           - ec2:DescribeNetworkInterfaces
+  #           - ec2:DeleteNetworkInterface
+  #           Resource: "*"
 
   ZipMoneyDynamoDBExecutionRole:
     Type: AWS::IAM::Role

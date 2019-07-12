@@ -8,15 +8,6 @@ Globals:
     Environment:
       Variables:
         ENV_NAME: !Ref Environment
-    VpcConfig:
-      SecurityGroupIds: 
-        - Fn::ImportValue:
-            Fn::Sub: 'payment-services-proxy-SecurityGroup'
-      SubnetIds: 
-        - Fn::ImportValue:
-            Fn::Sub: 'payment-services-proxy-PrivateSubnetZoneAId'
-        - Fn::ImportValue:
-            Fn::Sub: 'payment-services-proxy-PrivateSubnetZoneBId'
 
 Parameters:
   Environment:
@@ -30,6 +21,23 @@ Parameters:
     Description: Application development environments for sam.
 
 Resources:
+  LambdaEC2Policy:
+    Type: "AWS::IAM::Policy"
+    Properties: 
+      PolicyName: "LambdaEC2"
+      PolicyDocument: 
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+            - ec2:CreateNetworkInterface
+            - ec2:DescribeNetworkInterfaces
+            - ec2:DeleteNetworkInterface
+            Resource: "*"
+
   ZipMoneyDynamoDBExecutionRole:
     Type: AWS::IAM::Role
     Properties:
@@ -65,28 +73,40 @@ Resources:
                   - logs:PutLogEvents
                 Resource: "*"
         -
-          PolicyName: lambdaVpcConfig
-          PolicyDocument:
-            Version: '2012-10-17'
-            Statement:
-              - Effect: Allow
-                Action:
-                - logs:CreateLogGroup
-                - logs:CreateLogStream
-                - logs:PutLogEvents
-                - ec2:CreateNetworkInterface
-                - ec2:DescribeNetworkInterfaces
-                - ec2:DeleteNetworkInterface
-                Resource: "*"
+#           PolicyName: lambdaVpcConfig
+#           PolicyDocument:
+#             Version: '2012-10-17'
+#             Statement:
+#               - Effect: Allow
+#                 Action:
+#                 - logs:CreateLogGroup
+#                 - logs:CreateLogStream
+#                 - logs:PutLogEvents
+#                 - ec2:CreateNetworkInterface
+#                 - ec2:DescribeNetworkInterfaces
+#                 - ec2:DeleteNetworkInterface
+#                 Resource: "*"
 
   HelloWorldFunction:
     Type: AWS::Serverless::Function 
     Properties:
-      Role: !GetAtt [ ZipMoneyDynamoDBExecutionRole, Arn ]
+      #Role: !GetAtt [ ZipMoneyDynamoDBExecutionRole, Arn ]
+      Role: none
+      Policies:
+        - AWSLambdaVPCAccessExecutionRole #managed policy
       CodeUri: hello-world/
       Handler: app.lambdaHandler
       Runtime: nodejs8.10
       FunctionName: Hello-world-July
+      VpcConfig:
+        SecurityGroupIds: 
+          - Fn::ImportValue:
+             Fn::Sub: 'payment-services-proxy-SecurityGroup'
+        SubnetIds: 
+          - Fn::ImportValue:
+             Fn::Sub: 'payment-services-proxy-PrivateSubnetZoneAId'
+          - Fn::ImportValue:
+             Fn::Sub: 'payment-services-proxy-PrivateSubnetZoneBId'
       Events:
         HelloWorld:
           Type: Api

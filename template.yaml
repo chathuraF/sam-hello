@@ -72,7 +72,7 @@ Resources:
                   - logs:CreateLogStream
                   - logs:PutLogEvents
                 Resource: "*"
-        -
+#        -
 #           PolicyName: lambdaVpcConfig
 #           PolicyDocument:
 #             Version: '2012-10-17'

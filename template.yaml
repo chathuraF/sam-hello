@@ -51,6 +51,7 @@ Resources:
             Action:
               - sts:AssumeRole
       Policies:
+        - AWSLambdaVPCAccessExecutionRole
         -
           PolicyName: lambdaPolicyDynamoDB
           PolicyDocument:
@@ -77,8 +78,8 @@ Resources:
     Type: AWS::Serverless::Function 
     Properties:
       Role: !GetAtt [ ZipMoneyDynamoDBExecutionRole, Arn ]
-      Policies:
-        - AWSLambdaVPCAccessExecutionRole #managed policy
+      # Policies:
+      #   - AWSLambdaVPCAccessExecutionRole #managed policy
       CodeUri: hello-world/
       Handler: app.lambdaHandler
       Runtime: nodejs8.10
